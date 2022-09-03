@@ -26,7 +26,7 @@ public class Product {
 	
 	private Integer pstock; // 상품 수량
 	
-	private String pImg1; // 상품이미지1
+	private Integer pImg1; // 상품이미지1
 //	
 //	private String pImg2; // 상품이미지2
 //	
@@ -38,7 +38,7 @@ public class Product {
 		
 	}
 	
-	public Product(String pname, String ptype, Integer pprice, Integer pstock, String pImg1, String pdetail) {
+	public Product(String pname, String ptype, Integer pprice, Integer pstock, Integer pImg1, String pdetail) {
 		this.pname = pname;
 		this.ptype = ptype;
 		this.pprice = pprice;

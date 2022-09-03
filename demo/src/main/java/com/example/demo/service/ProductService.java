@@ -15,7 +15,7 @@ public class ProductService {
 	@Autowired
 	private final ProductRepository productRepository;
 	
-	public Product register(String pname, String ptype, Integer pprice, Integer pstock, String pImg1, String pdetail ) {
+	public Product register(String pname, String ptype, Integer pprice, Integer pstock, Integer pImg1, String pdetail ) {
 		Product product = new Product();
 		product.setPname(pname);
 		product.setPtype(ptype);
