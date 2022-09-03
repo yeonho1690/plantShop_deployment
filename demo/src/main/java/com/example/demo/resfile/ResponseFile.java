@@ -1,7 +1,4 @@
-package com.example.demo.model;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
+package com.example.demo.resfile;
 
 import lombok.Getter;
 import lombok.Setter;
