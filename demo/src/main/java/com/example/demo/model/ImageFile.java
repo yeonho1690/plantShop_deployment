@@ -12,12 +12,12 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "files")
-@Getter @Setter
+@Getter	@Setter
 public class ImageFile {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer fid; // 이미지 파일 아이디
+	private Integer fid;	// 이미지 파일 아이디
 	
 	private String name;
 	
@@ -26,10 +26,13 @@ public class ImageFile {
 	@Lob
 	private byte[] data;
 	
+	private String url;
+	
 	public ImageFile() {}
 	public ImageFile(String name, String type, byte[] data) {
 		this.name = name;
 		this.type = type;
 		this.data = data;
 	}
+	
 }

@@ -18,32 +18,32 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pid;
 	
-	private String pname; // »óÇ°¸í
+	private String pname; // ìƒí’ˆëª…
 	
-	private String ptype; // »óÇ° Ä«Å×°í¸®
+	private String ptype; // ì¹´í…Œê³ ë¦¬
 	
-	private Integer pprice; // »óÇ° °¡°İ
+	private Integer pprice; // ê°€ê²©
 	
-	private Integer pstock; // »óÇ° ¼ö·®
+	private Integer pstock; // ìˆ˜ëŸ‰
 	
-	private Integer pImg1; // »óÇ°ÀÌ¹ÌÁö1
+	private Integer pimg1; // ì´ë¯¸ì§€ íŒŒì¼ ì•„ì´ë””
 //	
-//	private String pImg2; // »óÇ°ÀÌ¹ÌÁö2
+//	private String pImg2; // ï¿½ï¿½Ç°ï¿½Ì¹ï¿½ï¿½ï¿½2
 //	
-//	private String pImg3; // »óÇ°ÀÌ¹ÌÁö3
+//	private String pImg3; // ï¿½ï¿½Ç°ï¿½Ì¹ï¿½ï¿½ï¿½3
 	
-	private String pdetail; // »óÇ° »ó¼¼¼³¸í
+	private String pdetail; // ìƒí’ˆ ìƒì„¸ì •ë³´
 	
 	public Product() {
 		
 	}
 	
-	public Product(String pname, String ptype, Integer pprice, Integer pstock, Integer pImg1, String pdetail) {
+	public Product(String pname, String ptype, Integer pprice, Integer pstock, Integer pimg1, String pdetail) {
 		this.pname = pname;
 		this.ptype = ptype;
 		this.pprice = pprice;
 		this.pstock = pstock;
-		this.pImg1 = pImg1;
+		this.pimg1 = pimg1;
 		this.pdetail = pdetail;
 	}
 	

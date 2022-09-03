@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import com.example.demo.repository.ImageFileRepository;
 
 @Service
 public class ImageFileService {
-	
+
 	@Autowired
 	ImageFileRepository fileRepository;
 	
@@ -26,8 +27,10 @@ public class ImageFileService {
 	}
 	
 	public ImageFile getFile(Integer fid) {
-		Optional<ImageFile> fileData = fileRepository.findById(fid);
-		
-		return fileData.get();
+		return fileRepository.findById(fid).get();
 	}
+	public Stream<ImageFile> getAllFiles() {
+		return fileRepository.findAll().stream();
+	}
+	
 }
