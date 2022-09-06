@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,17 @@ public class ProductControll {
 		}
 	}
 	
+	@GetMapping("/detail/{pid}")
+	public ResponseEntity<Product> productDetail (@PathVariable("pid") Long pid) {
+		Optional<Product> productData = productRepository.findById(pid);
+		productRepository.save(productData.get());
+		if(productData.isPresent()) {
+			return new ResponseEntity<>(productData.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
 	@GetMapping("/files")
 	public ResponseEntity<List<ResponseFile>> getListFiles() {
 		
@@ -82,9 +94,9 @@ public class ProductControll {
 	}
 	
 
-	@GetMapping("/files/{id}")
-	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
-		ImageFile file = fileService.getFile(id);
+	@GetMapping("/files/{fid}")
+	public ResponseEntity<byte[]> getFile(@PathVariable String fid) {
+		ImageFile file = fileService.getFile(fid);
 		
 		return ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
