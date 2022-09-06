@@ -2,10 +2,11 @@ package com.example.demo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,18 +17,17 @@ import lombok.Setter;
 public class ImageFile {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer fid;	// ÀÌ¹ÌÁö ÆÄÀÏ ¾ÆÀÌµğ
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	private String fid;	// ì´ë¯¸ì§€ ì•„ì´ë””
 	
-	private String name;
+	private String name; // ì´ë¯¸ì§€ íŒŒì¼ëª…
 	
 	private String type;
 	
 	@Lob
 	private byte[] data;
-	
-	private String url;
-	
+		
 	public ImageFile() {}
 	public ImageFile(String name, String type, byte[] data) {
 		this.name = name;

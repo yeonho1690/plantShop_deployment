@@ -40,8 +40,9 @@ public class ProductControll {
 	
 	@Autowired
 	ImageFileService fileService;
+
 	
-	// ¸ñ·Ï
+	// ëª©ë¡
 	@GetMapping("/{ptype}")
 	public ResponseEntity<List<Product>> productList(@PathVariable("ptype") String ptype) {
 		try {
@@ -65,15 +66,24 @@ public class ProductControll {
 	public ResponseEntity<List<ResponseFile>> getListFiles() {
 		
 		List<ResponseFile> files = fileService.getAllFiles().map(dbFile -> {
-			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
-					.path(String.valueOf(dbFile.getFid())).toUriString();
+			String fileDownloadUri = ServletUriComponentsBuilder
+					.fromCurrentContextPath()
+					.path("/api/product/files/")
+					.path(dbFile.getFid())
+					.toUriString();
 			
-			return new ResponseFile(dbFile.getName(), fileDownloadUri, dbFile.getType(), dbFile.getData().length);
+			return new ResponseFile(
+					dbFile.getName(), 
+					fileDownloadUri, 
+					dbFile.getType(), 
+					dbFile.getData().length);
 		}).collect(Collectors.toList());
 		return ResponseEntity.status(HttpStatus.OK).body(files);
 	}
+	
+
 	@GetMapping("/files/{id}")
-	public ResponseEntity<byte[]> getFile(@PathVariable Integer id) {
+	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
 		ImageFile file = fileService.getFile(id);
 		
 		return ResponseEntity.ok()
@@ -81,13 +91,13 @@ public class ProductControll {
 				.body(file.getData());
 	}
 	
-	// µî·Ï
+	// ë“±ë¡
 	@PostMapping("/register")
 	public ResponseEntity<Product> registerProduct(@RequestPart(value = "pdata") Product product, @RequestPart(value = "pfile") MultipartFile file) {
 		try {
-			ImageFile imageFile = fileService.save(file);	// ºä¿¡¼­ ¹Ş¾Æ¿Â ÀÌ¹ÌÁö ÆÄÀÏ ÀúÀå
+			ImageFile imageFile = fileService.save(file);	// ï¿½ä¿¡ï¿½ï¿½ ï¿½Ş¾Æ¿ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			
-			// ÀÌ¹ÌÁö Æ÷ÇÔ »óÇ° Á¤º¸ ÀúÀå
+			// ì´ë¯¸ì§€ í¬í•¨ ìƒí’ˆ ì •ë³´ ì €ì¥
 			Product _product = this.productRepository.save(
 					new Product(product.getPname(), product.getPtype(), product.getPprice(), product.getPstock(), imageFile.getFid(), product.getPdetail()));
 			return new ResponseEntity<>(_product, HttpStatus.CREATED);

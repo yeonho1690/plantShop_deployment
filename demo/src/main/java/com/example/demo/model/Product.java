@@ -26,7 +26,7 @@ public class Product {
 	
 	private Integer pstock; // 수량
 	
-	private Integer pimg1; // 이미지 파일 아이디
+	private String pimg1; // 이미지 파일 아이디
 //	
 //	private String pImg2; // ��ǰ�̹���2
 //	
@@ -38,7 +38,7 @@ public class Product {
 		
 	}
 	
-	public Product(String pname, String ptype, Integer pprice, Integer pstock, Integer pimg1, String pdetail) {
+	public Product(String pname, String ptype, Integer pprice, Integer pstock, String pimg1, String pdetail) {
 		this.pname = pname;
 		this.ptype = ptype;
 		this.pprice = pprice;

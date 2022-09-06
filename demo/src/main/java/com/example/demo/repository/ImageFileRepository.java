@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.model.ImageFile;
 
-public interface ImageFileRepository extends JpaRepository<ImageFile, Integer> {
+public interface ImageFileRepository extends JpaRepository<ImageFile, String> {
 
 }

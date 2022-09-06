@@ -26,7 +26,7 @@ public class ImageFileService {
 		return fileRepository.save(imageFile);
 	}
 	
-	public ImageFile getFile(Integer fid) {
+	public ImageFile getFile(String fid) {
 		return fileRepository.findById(fid).get();
 	}
 	public Stream<ImageFile> getAllFiles() {
