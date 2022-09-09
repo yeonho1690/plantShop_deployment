@@ -26,7 +26,7 @@ public class Product {
 	
 	private Integer pstock; // 수량
 	
-	private String pimg1; // 이미지 파일 아이디
+	private String pimg1; // 이미지 파일 경로
 //	
 //	private String pImg2; // ��ǰ�̹���2
 //	

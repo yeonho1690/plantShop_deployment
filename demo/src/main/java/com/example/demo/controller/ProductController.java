@@ -32,7 +32,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
 @Controller
-public class ProductControll {
+public class ProductController {
 
 	@Autowired
 	private final ProductService productService;
@@ -63,6 +63,7 @@ public class ProductControll {
 		}
 	}
 	
+	// 상세정보
 	@GetMapping("/detail/{pid}")
 	public ResponseEntity<Product> productDetail (@PathVariable("pid") Long pid) {
 		Optional<Product> productData = productRepository.findById(pid);
@@ -74,29 +75,47 @@ public class ProductControll {
 		}
 	}
 	
-	@GetMapping("/files")
-	public ResponseEntity<List<ResponseFile>> getListFiles() {
-		
-		List<ResponseFile> files = fileService.getAllFiles().map(dbFile -> {
-			String fileDownloadUri = ServletUriComponentsBuilder
-					.fromCurrentContextPath()
-					.path("/api/product/files/")
-					.path(dbFile.getFid())
-					.toUriString();
-			
-			return new ResponseFile(
-					dbFile.getName(), 
-					fileDownloadUri, 
-					dbFile.getType(), 
-					dbFile.getData().length);
-		}).collect(Collectors.toList());
-		return ResponseEntity.status(HttpStatus.OK).body(files);
-	}
+//	// 전체 이미지 파일
+//	@GetMapping("/files")
+//	public ResponseEntity<List<ResponseFile>> getListFiles() {
+//		
+//		List<ResponseFile> files = fileService.getAllFiles().map(dbFile -> {
+//			String fileDownloadUri = ServletUriComponentsBuilder
+//					.fromCurrentContextPath()
+//					.path("/api/product/file/")
+//					.path(dbFile.getFid())
+//					.toUriString();
+//			
+//			return new ResponseFile(
+//					dbFile.getName(), 
+//					fileDownloadUri, 
+//					dbFile.getType(), 
+//					dbFile.getData().length);
+//		}).collect(Collectors.toList());
+//		return ResponseEntity.status(HttpStatus.OK).body(files);
+//	}
+//	// 특정 이미지 파일의 ResponseFile
+//	@GetMapping("/files/{id}")
+//	public ResponseEntity<ResponseFile> getResponseFile(@PathVariable String id) {
+//		ImageFile dbFile = fileService.getFile(id);
+//		String fileDownloadUri = ServletUriComponentsBuilder
+//				.fromCurrentContextPath()
+//				.path("/api/product/file/")
+//				.path(dbFile.getFid())
+//				.toUriString();
+//		ResponseFile file = new ResponseFile(
+//									dbFile.getName(), 
+//									fileDownloadUri, 
+//									dbFile.getType(), 
+//									dbFile.getData().length
+//								);
+//		return new ResponseEntity<>(file, HttpStatus.OK);
+//	}
 	
-
-	@GetMapping("/files/{fid}")
-	public ResponseEntity<byte[]> getFile(@PathVariable String fid) {
-		ImageFile file = fileService.getFile(fid);
+	// 특정 이미지 파일
+	@GetMapping("/file/{id}")
+	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+		ImageFile file = fileService.getFile(id);
 		
 		return ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
@@ -107,11 +126,18 @@ public class ProductControll {
 	@PostMapping("/register")
 	public ResponseEntity<Product> registerProduct(@RequestPart(value = "pdata") Product product, @RequestPart(value = "pfile") MultipartFile file) {
 		try {
-			ImageFile imageFile = fileService.save(file);	// �信�� �޾ƿ� �̹��� ���� ����
+			ImageFile imageFile = fileService.save(file);	// 이미지 파일 아이디
+			
+			// 이미지 파일 경로
+			String fileDownloadUri = ServletUriComponentsBuilder
+					.fromCurrentContextPath()
+					.path("/api/product/file/")
+					.path(imageFile.getFid())
+					.toUriString();
 			
 			// 이미지 포함 상품 정보 저장
 			Product _product = this.productRepository.save(
-					new Product(product.getPname(), product.getPtype(), product.getPprice(), product.getPstock(), imageFile.getFid(), product.getPdetail()));
+					new Product(product.getPname(), product.getPtype(), product.getPprice(), product.getPstock(), fileDownloadUri, product.getPdetail()));
 			return new ResponseEntity<>(_product, HttpStatus.CREATED);
 					
 		} catch (Exception e) {
