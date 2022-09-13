@@ -63,6 +63,21 @@ public class ProductControll {
 		}
 	}
 	
+	// 관리자 상품관리 리스트
+	@GetMapping("/all")
+	public ResponseEntity<List<Product>> productAdminList() {
+		try {
+			List<Product> products = new ArrayList<Product>();
+			
+			productRepository.findAll().forEach(products::add);
+			
+			return new ResponseEntity<>(products, HttpStatus.OK);
+		} catch(Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	// 상세페이지 
 	@GetMapping("/detail/{pid}")
 	public ResponseEntity<Product> productDetail (@PathVariable("pid") Long pid) {
 		Optional<Product> productData = productRepository.findById(pid);
