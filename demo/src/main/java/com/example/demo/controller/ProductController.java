@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +23,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.demo.model.ImageFile;
 import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
-import com.example.demo.resfile.ResponseFile;
 import com.example.demo.service.ImageFileService;
 import com.example.demo.service.ProductService;
 
@@ -57,6 +57,20 @@ public class ProductController {
 			if(products.isEmpty())
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			
+			return new ResponseEntity<>(products, HttpStatus.OK);
+		} catch(Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	// 관리자 상품관리 리스트
+	@GetMapping("/all")
+	public ResponseEntity<List<Product>> productAdminList() {
+		try {
+			List<Product> products = new ArrayList<Product>();
+
+			productRepository.findAll().forEach(products::add);
+
 			return new ResponseEntity<>(products, HttpStatus.OK);
 		} catch(Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -142,6 +156,40 @@ public class ProductController {
 					
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	// 수정 버튼 클릭 시 해당 상품 정보 출력
+	@GetMapping("/modify/{pid}")
+	public ResponseEntity<Product> updateProduct(@PathVariable("pid") Long pid) {
+		try {
+			Optional<Product> productData = this.productRepository.findById(pid);
+			productData.get().setPname(productData.get().getPname());
+			productData.get().setPtype(productData.get().getPtype());
+			productData.get().setPprice(productData.get().getPprice());
+			productData.get().setPstock(productData.get().getPstock());
+			productData.get().setPdetail(productData.get().getPdetail());
+			return new ResponseEntity<>(productData.get(), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	// 수정
+	@PutMapping("/modify/{pid}")
+	public ResponseEntity<Product> updateProduct(@PathVariable("pid") Long pid, @RequestBody Product product) {
+		
+		Optional<Product> productData = productRepository.findById(pid);
+		if(productData.isPresent()) {
+			Product newProduct = productData.get();
+			newProduct.setPname(product.getPname());
+			newProduct.setPtype(product.getPtype());
+			newProduct.setPprice(product.getPprice());
+			newProduct.setPstock(product.getPstock());
+			newProduct.setPdetail(product.getPdetail());
+			return new ResponseEntity<>(productRepository.save(newProduct), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<> (HttpStatus.NOT_FOUND);
 		}
 	}
 	
