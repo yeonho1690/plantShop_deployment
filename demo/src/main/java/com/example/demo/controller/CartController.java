@@ -52,6 +52,17 @@ public class CartController {
 		}
 	}
 	
+	@GetMapping("/auth/cart/{cid}")
+	public ResponseEntity<Cart> cartById(@PathVariable("cid") Integer cid){
+		try {
+		Optional<Cart> cartData = this.cartRepository.findById(cid);
+		Cart cart = cartData.get();
+		return new ResponseEntity<>(cart, HttpStatus.OK);
+		} catch(Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
 
 	
 	@DeleteMapping("/auth/cart/delete/{cid}")
