@@ -27,19 +27,19 @@ public class Order {
 	private String username; //고객명
 	
 	@JoinColumn(name = "pname")
-	private String pname;
+	private String pname; // 상품명
 	
 	@JoinColumn(name = "pprice")
-	private Integer pprice;
+	private Integer pprice; // 상품 가격
 	
 	@JoinColumn(name = "pstock")
-	private Integer pstock;
+	private Integer pstock; // 상품 갯수
 	
 	@JoinColumn(name = "pid")
-	private Integer pid;
+	private Integer pid; // 상품 아이디
 	
 	@JoinColumn(name = "pimg1")
-	private String pimg1;
+	private String pimg1; // 상품 이미지
 	
 	@Column(length = 50/*, nullable = false*/)
 	private String oname;//수령인

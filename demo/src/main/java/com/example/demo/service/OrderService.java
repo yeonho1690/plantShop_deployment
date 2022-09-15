@@ -9,10 +9,10 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class OrderService {
 
-	public String currentUserName() {
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println((user.getUsername()));
-		return user.getUsername();
-	}
-	
+//	public String currentUserName() {
+//		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		System.out.println((user.getUsername()));
+//		return user.getUsername();
+//	}
+//	
 }

@@ -68,12 +68,12 @@ public class AuthController {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Username is already taken!"));
+					.body(new MessageResponse("이미 존재하는 아이디입니다!"));
 		}
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Email is already in use!"));
+					.body(new MessageResponse("이미 존재하는 이메일입니다!"));
 		}
 		// Create new user's account
 		User user = new User(signUpRequest.getUsername(), 
@@ -102,6 +102,6 @@ public class AuthController {
 		}
 		user.setRoles(roles);
 		userRepository.save(user);
-		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+		return ResponseEntity.ok(new MessageResponse("회원가입이 성공했습니다."));
 	}
 }
