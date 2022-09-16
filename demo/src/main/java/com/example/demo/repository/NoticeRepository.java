@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.example.demo.dto.NoticeFormDto;
 import com.example.demo.model.Notice;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Repository
 public interface NoticeRepository extends JpaRepository<Notice, Integer> {
 

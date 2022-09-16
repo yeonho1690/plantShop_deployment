@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import lombok.Getter;
 import lombok.Setter;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Getter
 @Setter
 public class ProductFormDto {
 	
-	@NotEmpty(message = "»óÇ°¸íÀº ÇÊ¼ö ÀÔ´Ï´Ù.")
+	@NotEmpty(message = "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½Ô´Ï´ï¿½.")
 	@Size(max=50)
 	private String pname;
 	
-	@NotEmpty(message="Ä«Å×°í¸®´Â ÇÊ¼ö ÀÔ´Ï´Ù.")
+	@NotEmpty(message="Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½Ô´Ï´ï¿½.")
 	private String ptype;
 	
-	@NotEmpty(message = "°¡°ÝÀÔ·ÂÀº ÇÊ¼ö ÀÔ´Ï´Ù.")
+	@NotEmpty(message = "ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½Ô´Ï´ï¿½.")
 	private String pprice;
 	
-	@NotEmpty(message = "Àç°íÀÔ·ÂÀº ÇÊ¼ö ÀÔ´Ï´Ù.")
+	@NotEmpty(message = "ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½Ô´Ï´ï¿½.")
 	private String pstock;
 	
 	private String pImag1;
 	
-	@NotEmpty(message = "»óÇ°¼³¸íÀº ÇÊ¼ö ÀÔ´Ï´Ù.")
+	@NotEmpty(message = "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½Ô´Ï´ï¿½.")
 	@Size(max=100)
 	private String pDetail;
 	
@@ -36,8 +36,8 @@ public class ProductFormDto {
 		
 	}
 	
-//	public ProductFormDto(@NotEmpty(message = "»óÇ°¸íÀº ÇÊ¼ö ÀÔ´Ï´Ù.")@Size(max=50) private String pname,
-//	@NotEmpty(message="Ä«Å×°í¸®´Â ÇÊ¼ö ÀÔ´Ï´Ù.") private String ptype	) {
+//	public ProductFormDto(@NotEmpty(message = "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½Ô´Ï´ï¿½.")@Size(max=50) private String pname,
+//	@NotEmpty(message="Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ ï¿½Ô´Ï´ï¿½.") private String ptype	) {
 //		super();
 //		this.pname = pname;
 //		this.ptype = ptype;

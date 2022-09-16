@@ -24,18 +24,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import android.util.Base64;
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/chatbot")
 @Controller
 public class chatbotController {
    
-   @GetMapping("/chatbotform")
+   @PostMapping("/chatbotform")
    public String chatbotForm() {
       return "chatbot";
    } 
    
    @ResponseBody
-   @PostMapping("/chatbot")
+   @GetMapping("/chatbot")
    public String chatbot(@RequestParam("query") String query) {
       String chatbotMessage = ""; 
  

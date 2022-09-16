@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.example.demo.dto.FaqFormDto;
 import com.example.demo.model.Faq;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Repository
 public interface FaqRepository extends JpaRepository<Faq, Integer>{
 

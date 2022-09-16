@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import lombok.Getter;
 import lombok.Setter;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Entity
 @Getter @Setter
 public class Faq {

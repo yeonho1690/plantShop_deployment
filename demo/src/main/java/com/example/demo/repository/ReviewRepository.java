@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.example.demo.model.Product;
 import com.example.demo.model.Review;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
