@@ -5,40 +5,40 @@
          <textarea id="start" v-model="mytext"/><br>
          <textarea id="content" rows=20></textarea><br>                
          <input type="text" id="queryin" > 
-         <button id="query1" @click="alldata1">질문</button> 
+         <button id="query1" >질문</button> 
       </div>
    </section>
 </template>
-<!--<script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
 <script>
 
-// $(function() { 
-//         $("#query").click( function() {
-//            /*$("#content").append($("#queryin").val());*/
-//             $.ajax( {
-//              type: "post",
-//              dataType: "text",
-//              async: false,
-//              url: "http://localhost:8090/api/chatbot/chatbot/",
-//              data: 
-//             {
-//                 query:$('#queryin').val()
-//                   },
-//                success: function(data) {
-//                console.log(data);
-//                var spt = data.split('http');
-//                /* console.log(spt); */
-//                document.getElementById('image').src= "http"+spt[1];
-//                   $("#content").append("\n");
-//                   $("#content").append(spt[0]);
-//                   $("#content").append("\n");
-//                   $("#content").append("\n");
-//                   $("#content").append("======================================");
-//                   $("#content").append("\n");
-//                }   
-//            });           
-//         });  
-//      }) 
+$(function() { 
+        $("#query").click( function() {
+           /*$("#content").append($("#queryin").val());*/
+            $.ajax( {
+             type: "post",
+             dataType: "text",
+             async: false,
+             url: "http://115.85.180.27:8090/api/chatbot/chatbot/",
+             data: 
+            {
+                query:$('#queryin').val()
+                  },
+               success: function(data) {
+               console.log(data);
+               var spt = data.split('http');
+               /* console.log(spt); */
+               document.getElementById('image').src= "http"+spt[1];
+                  $("#content").append("\n");
+                  $("#content").append(spt[0]);
+                  $("#content").append("\n");
+                  $("#content").append("\n");
+                  $("#content").append("======================================");
+                  $("#content").append("\n");
+               }   
+           });           
+        });  
+     }) 
 import chatbot from '../services/chatbot';
      export default {
       data(){
