@@ -12,7 +12,31 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
 <script>
 
-$(function() { 
+
+import chatbot from '../services/chatbot';
+     export default {
+      data(){
+         return {
+            mytext:'안녕하세요.\n트레플 챗봇에 오신 것을 환영합니다.\n\n아래 채팅창을 통해 식물과 관련된 정보를 검색하실 수 있습니다.\n\nex) 동백나무, 고무나무 정보, 공중식물',
+            alldata:"",
+            query:"",
+         }
+      },
+      methods:{
+         alldata1(){
+            this.query = document.getElementById('queryin').value;
+            console.log(this.query);
+            chatbot.getchatbot()
+            .then(response => {
+               console.log(response.data);
+            }).catch(()=>{});
+         },
+         queryvalue(){
+            
+         }
+      },
+       mounted(){
+         $(function() { 
         $("#query").click( function() {
            /*$("#content").append($("#queryin").val());*/
             $.ajax( {
@@ -39,31 +63,7 @@ $(function() {
            });           
         });  
      }) 
-import chatbot from '../services/chatbot';
-     export default {
-      data(){
-         return {
-            mytext:'안녕하세요.\n트레플 챗봇에 오신 것을 환영합니다.\n\n아래 채팅창을 통해 식물과 관련된 정보를 검색하실 수 있습니다.\n\nex) 동백나무, 고무나무 정보, 공중식물',
-            alldata:"",
-            query:"",
-         }
-      },
-      methods:{
-         alldata1(){
-            this.query = document.getElementById('queryin').value;
-            console.log(this.query);
-            chatbot.getchatbot()
-            .then(response => {
-               console.log(response.data);
-            }).catch(()=>{});
-         },
-         queryvalue(){
-            
-         }
-      },
-      // mounted(){
-      //    console.log(this.query);
-      // }
+       }
 
    }
 </script>
