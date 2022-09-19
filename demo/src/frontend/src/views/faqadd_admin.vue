@@ -1,6 +1,6 @@
 <template>
     <div>
-    
+    <side-menu></side-menu>
         <div> 
             <h2 style="text-align:left;margin-left:250px;"> FAQ 등록 </h2>
             <hr style="width:50%;margin-left:250px;">
@@ -22,6 +22,7 @@
 </div>
 </template>
 <script>
+import sidemenuAdmin from '../views/sidemenu_admin';
     import FaqDataService from '../services/FaqDataService';
     export default {
         name: "faq-add",
@@ -36,6 +37,10 @@
                 submitted: false
             }
         },
+         components: {
+            'side-menu': sidemenuAdmin,
+            // 'pop-up': popUp
+        },  
         methods: {
             addFaq(){             
                 var faqData = {

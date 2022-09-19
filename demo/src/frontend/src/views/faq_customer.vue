@@ -7,7 +7,7 @@
             <br>
             
             
-            <!-- 공지사항 목록 -->
+            <!-- faq 목록 -->
             <table class="text-center">
                 <thead>
                     <tr>

@@ -1,5 +1,7 @@
 <template>    
+        
         <div id="faq-main" v-if="currentFaq != null">
+            <side-menu></side-menu>
             <h3><strong>FAQ</strong></h3>
             <br>            
             <table>
@@ -25,6 +27,7 @@
 </template>
 
 <script>
+import sidemenuAdmin from '../views/sidemenu_admin';
 import FaqDataService from '../services/FaqDataService';
 export default {
     name: "faqdetail_customer",
@@ -37,6 +40,10 @@ export default {
             }
         }
     },
+    components: {
+            'side-menu': sidemenuAdmin,
+            // 'pop-up': popUp
+        }, 
     methods: {
         getFaq(fid){
             FaqDataService.get(fid)

@@ -19,7 +19,7 @@
                     </tr>
                 </tbody>
             </table>
-            <hr>
+            
             <button class="btn" @click="list">목록</button>
         </div>
     
