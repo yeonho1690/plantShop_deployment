@@ -4,8 +4,8 @@
          <img src="../assets/chatbotstart.png" id="image"><br>
          <textarea id="start" v-model="mytext"/><br>
          <textarea id="content" rows=20></textarea><br>                
-         <input type="text" id="queryin" > 
-         <button id="query1" >질문</button> 
+         <input type="text" id="queryin"> 
+         <button id="query">질문</button> 
       </div>
    </section>
 </template>
@@ -19,7 +19,7 @@ $(function() {
              type: "post",
              dataType: "text",
              async: false,
-             url: "http://115.85.180.27:8090/api/chatbot/chatbot/",
+             url: "http://115.85.180.27:8090/api/chatbot/chatbot",
              data: 
             {
                 query:$('#queryin').val()
@@ -94,7 +94,7 @@ import chatbot from '../services/chatbot';
    height: 33px;
 }
 
-#query1{
+#query{
    background-color:rgb(22, 160, 133);
     border: none;
     color: white;
