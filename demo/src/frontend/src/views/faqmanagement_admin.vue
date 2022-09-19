@@ -135,10 +135,10 @@ components: {
 #notice-manager {
     width: 1500px;
     min-height: 500px;
-    /* margin: auto; */
+    margin: auto; 
     margin-top: 50px;
     margin-bottom: 100px;
-    /* margin-left: 200px; */
+    margin-left: 200px;
     padding:1px 16px;
 }
 

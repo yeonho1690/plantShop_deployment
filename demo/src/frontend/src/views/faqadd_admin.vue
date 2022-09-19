@@ -22,7 +22,7 @@
 </div>
 </template>
 <script>
-import sidemenuAdmin from '../views/sidemenu_admin';
+    import sidemenuAdmin from '../views/sidemenu_admin';
     import FaqDataService from '../services/FaqDataService';
     export default {
         name: "faq-add",

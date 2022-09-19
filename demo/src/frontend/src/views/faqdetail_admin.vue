@@ -1,7 +1,9 @@
-<template>    
+<template> 
+        <div>   
+        <side-menu></side-menu>
         
         <div id="faq-main" v-if="currentFaq != null">
-            <side-menu></side-menu>
+            
             <h3><strong>FAQ</strong></h3>
             <br>            
             <table>
@@ -24,6 +26,7 @@
                 <router-link :to="`/admin/faq/update/${currentFaq.fid}`" style="float:right;margin-right:10px;" class="btn" >수정</router-link>
             </p>
         </div>   
+        </div>
 </template>
 
 <script>
