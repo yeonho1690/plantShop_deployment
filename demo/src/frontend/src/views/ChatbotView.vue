@@ -11,9 +11,6 @@
 </template>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
 <script>
-
-
-import chatbot from '../services/chatbot';
      export default {
       data(){
          return {
@@ -22,20 +19,7 @@ import chatbot from '../services/chatbot';
             query:"",
          }
       },
-      methods:{
-         alldata1(){
-            this.query = document.getElementById('queryin').value;
-            console.log(this.query);
-            chatbot.getchatbot()
-            .then(response => {
-               console.log(response.data);
-            }).catch(()=>{});
-         },
-         queryvalue(){
-            
-         }
-      },
-       mounted(){
+      mounted(){
          $(function() { 
         $("#query").click( function() {
            /*$("#content").append($("#queryin").val());*/
