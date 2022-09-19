@@ -29,13 +29,13 @@ import android.util.Base64;
 @Controller
 public class chatbotController {
    
-   @PostMapping("/chatbotform")
+   @GetMapping("/chatbotform")
    public String chatbotForm() {
       return "chatbot";
    } 
    
    @ResponseBody
-   @GetMapping("/chatbot")
+   @PostMapping("/chatbot")
    public String chatbot(@RequestParam("query") String query) {
       String chatbotMessage = ""; 
  
