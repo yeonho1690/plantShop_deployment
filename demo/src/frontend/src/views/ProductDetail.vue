@@ -135,24 +135,22 @@
                                 </li>
                                 <!-- Q&A 버튼 화면 전환-->
                                 <li>
-                                    <button type="button" class="btn">Q&A</button>
+                                    <button type="button" class="btn">FAQ/Q&A</button>
                                     <div id="tab3" class="cont">
                                         <!-- Q&A 화면 구성 시작 -->
 
                                         <div id="qnaContent">
-                                            <h3>Q&A</h3> <hr>
+                                            <h3>FAQ/Q&A</h3> <hr>
                                             <button type="button" id="createqnaBtn" @click="addqna_customer()">문의하기</button><br><br>
                                             <!-- FAQ 목록 -->
                                             <div class="submit-form">
                                                 <section>
                                                     <div id="faq-main">
-                                                        <h3 style="text-align: left;"><strong>FAQ</strong></h3>
-                                                        <br>
                                                         <table class="text-center">
                                                             <thead>
                                                                 <tr>
                                                                     <th>번호</th>
-                                                                    <th>제목</th>
+                                                                    <th>자주 묻는 질문</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody >

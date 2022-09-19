@@ -17,7 +17,7 @@
             </tr>
         </tbody>
     </table>
-<button style="margin-left:800px;" class="button1" @click="addFaq()">등록하기</button>
+<button style="margin-left:850px;" class="button1" @click="addFaq()">등록하기</button>
 <button class="button1" @click="cancel()">취소하기</button> 
 </div>
 </template>
