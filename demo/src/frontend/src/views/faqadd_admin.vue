@@ -2,10 +2,10 @@
     <div>
     <side-menu></side-menu>
         <div> 
-            <h2 style="text-align:left;margin-left:250px;"> FAQ 등록 </h2>
-            <hr style="width:50%;margin-left:250px;">
+            <h2 style="text-align:left;margin-left:500px;"> FAQ 등록 </h2>
+            <hr style="width:50%;margin-left:500px;">
         </div>
-    <table id="table" style="margin-left:250px;">
+    <table id="table">
         <tbody>
             <tr>
                 <th>질문 </th>
@@ -17,7 +17,7 @@
             </tr>
         </tbody>
     </table>
-<button style="margin-left:400px;" class="button1" @click="addFaq()">등록하기</button>
+<button style="margin-left:800px;" class="button1" @click="addFaq()">등록하기</button>
 <button class="button1" @click="cancel()">취소하기</button> 
 </div>
 </template>
@@ -64,6 +64,7 @@
 <style>
 #table {
     width: auto;
+    margin-left: 700px;
 }
 
 input{
