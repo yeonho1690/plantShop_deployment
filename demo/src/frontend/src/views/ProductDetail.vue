@@ -158,7 +158,7 @@
                                                                     <td> {{index+1}}</td>
                                                                     <td>
                                                                         <!-- <router-link :to="`/faq/detail/${faq.fid}`">{{faq.ftitle}} </router-link> -->
-                                                                        <button  @click="getFaq(faq.fid)">{{ faq.ftitle }}</button>
+                                                                        <button id="questionTitle" @click="getFaq(faq.fid)">{{ faq.ftitle }}</button>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -578,7 +578,7 @@
                 console.log(response.data);
             }).catch(()=>{}); 
         },
-        getfaq(fid) {  //faq 상세
+        getFaq(fid) {  //faq 상세
             FaqDataService.get(fid)
             .then(response => {
                 this.faqShow = true;
