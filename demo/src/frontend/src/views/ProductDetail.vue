@@ -141,7 +141,7 @@
 
                                         <div id="qnaContent">
                                             <h3>FAQ/Q&A</h3> <hr>
-                                            <button type="button" id="createqnaBtn" @click="addqna_customer()">문의하기</button><br><br>
+                                            <button type="button" id="createqnaBtn" @click="addqna_customer()">문의하기</button>
                                             <!-- FAQ 목록 -->
                                             <div class="submit-form">
                                                 <section>
@@ -1051,7 +1051,6 @@
 #faq-main {
     width: 1100px;
     margin: auto;
-    margin-bottom: 300px;
     padding-top: 70px;
 }
 
