@@ -146,7 +146,7 @@
                                             <!--faq상세 내용-->
                                             <div v-if="faqShow" id="questionDetail">
                                                 <h4>{{ currentFaq.ftitle }}</h4>                                              
-                                                <p class="qnaContent"> {{ currentFaq.fcontent }} </p>                                           
+                                                <p class="qnaContent"><pre>{{ currentFaq.fcontent }}</pre></p>                                           
                                             </div>
                                             <!-- FAQ 목록 -->
                                             <div class="submit-form">
