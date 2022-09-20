@@ -25,7 +25,7 @@
                 </p>   
                 <p>
                     <!-- <input type="file" ref="file" id="pimg1" @change="selectFile"> -->
-                    <img :src="currentProduct.pimg1" class="">
+                    <img :src="currentProduct.pimg1" id="pimg2">
                 </p>
                 <p>
                     <textarea class="form-control" rows="10" v-model="currentProduct.pdetail" id="pdetail" placeholder="상세정보 입력"></textarea>
@@ -123,9 +123,10 @@ export default {
 }
 
 
-#pimg1 {    /* 파일 추가 input 태그 테두리 삭제 */
+#pimg2 {    /* 파일 추가 input 태그 테두리 삭제 */
     border: 0;
-    margin-left: -420px;
+    width: 150px;
+    height: 100px;
 }
 
 #product-add button {   /* 등록 버튼 */

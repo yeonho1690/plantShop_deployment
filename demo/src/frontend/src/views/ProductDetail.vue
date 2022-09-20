@@ -157,13 +157,20 @@
                                                                 <tr v-for="(faq, index) in faqs" :key="index">
                                                                     <td> {{index+1}}</td>
                                                                     <td>
-                                                                        <router-link :to="`/faq/detail/${faq.fid}`">{{faq.ftitle}} </router-link>
+                                                                        <!-- <router-link :to="`/faq/detail/${faq.fid}`">{{faq.ftitle}} </router-link> -->
+                                                                        <button  @click="getFaq(faq.fid)">{{ faq.ftitle }}</button>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </section>
+                                            </div>
+
+                                            <!--faq상세 내용-->
+                                            <div v-if="faqShow" id="questionDetail">
+                                                <h4>{{ currentFaq.ftitle }}</h4>
+                                                {{ currentFaq.fcontent }}                                               
                                             </div>
 
                                             <!-- 문의글 상세 내용 -->
@@ -262,6 +269,7 @@
         return {
             faqs: [],
             currentFaq: null,
+            faqShow:false,
             products: [],
             files: [],
             currentFile: null,
@@ -563,12 +571,22 @@
                 
             }
         },
-        listFaq(){
+        listFaq(){//faq목록
             FaqDataService.getAll()
             .then(response => {
                 this.faqs = response.data;
                 console.log(response.data);
             }).catch(()=>{}); 
+        },
+        getfaq(fid) {  //faq 상세
+            FaqDataService.get(fid)
+            .then(response => {
+                this.faqShow = true;
+                this.currentFaq = response.data;
+                console.log(response.data);
+            }).catch(e => {
+                console.log(e);
+            });
         }
       },
       mounted() {
