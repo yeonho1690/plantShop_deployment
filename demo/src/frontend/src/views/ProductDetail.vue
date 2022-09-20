@@ -142,6 +142,12 @@
                                         <div id="qnaContent">
                                             <h3>FAQ/Q&A</h3> <hr>
                                             <button type="button" id="createqnaBtn" @click="addqna_customer()">문의하기</button>
+
+                                            <!--faq상세 내용-->
+                                            <div v-if="faqShow" id="questionDetail">
+                                                <h4>{{ currentFaq.ftitle }}</h4>                                              
+                                                <p class="qnaContent"> {{ currentFaq.fcontent }} </p>                                           
+                                            </div>
                                             <!-- FAQ 목록 -->
                                             <div class="submit-form">
                                                 <section>
@@ -165,14 +171,7 @@
                                                         </table>
                                                     </div>
                                                 </section>
-                                            </div>
-
-                                            <!--faq상세 내용-->
-                                            <div v-if="faqShow" id="questionDetail">
-                                                <h4>{{ currentFaq.ftitle }}</h4>
-                                                {{ currentFaq.fcontent }}                                               
-                                            </div>
-
+                                            </div>                                       
                                             <!-- 문의글 상세 내용 -->
                                             <div v-if="questionShow" id="questionDetail">
                                                 <h4>{{ currentQuestion.qtitle }}</h4>
