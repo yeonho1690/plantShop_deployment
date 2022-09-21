@@ -1,8 +1,8 @@
 <template>
     <section>
         <side-menu></side-menu>
-        <div style="margin-left: 200px; margin-top: 50px; padding:1px 16px; width:1500px; height:1000px;">
-            <table class="table text-center" id="order-manager">
+        <div id="order-manager" style="margin-left: 200px; margin-top: 50px; padding:1px 16px; width:1500px; height:1000px;">
+            <table class="table text-center" >
                 <thead style="background-color: rgb(224, 224, 224);">
                   <tr>
                     <th scope="col">주문번호</th>
@@ -37,7 +37,7 @@
                         <option value="배송완료">배송완료</option>
                         <option value="구매확정">구매확정</option>
                         </select> -->
-                        <router-link :to="`/admin/updateoStatus/${order.oid}`" tag="button" class="btn1">변경</router-link>
+                        <router-link :to="`/admin/updateoStatus/${order.oid}`" tag="button" class="btn">변경</router-link>
                     </td>
                   </tr>
                 </tbody>
@@ -146,6 +146,9 @@ export default {
     height: 260px;
     overflow: auto;
 
+}
+#order-manager button {    /* 추가 버튼을 제외한 모든 버튼 */
+    background-color: lightgray;
 }
 
 #side_list ul li a {
