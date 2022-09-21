@@ -134,7 +134,6 @@ export default {
 
 #notice-manager tbody tr td:nth-child(3) {  /* 제목 */
     width: 30%;
-    text-align: left;
 }
 #notice-manager tbody tr td:nth-child(4) {  /* 작성자 */
     width: 20%;

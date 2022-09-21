@@ -181,7 +181,6 @@ components: {
 }
 #notice-manager tbody tr td:nth-child(2) {  /* 제목 */
     width: 45%;
-    text-align: left;
 }
 
 #notice-manager tbody tr td:nth-child(3) {  /* 기간 */
