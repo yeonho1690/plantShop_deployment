@@ -7,7 +7,7 @@
                 <tbody>
                     <tr>
                         <th><span>{{index+1}}.&nbsp;[주문번호]&nbsp;{{order.oid}}&nbsp;[주문일]&nbsp;{{order.odate}}</span></th>
-                        <th ><span style="margin-left:210px">주문상태</span></th>
+                        <th ><span style="margin-left:245px">주문상태</span></th>
                     </tr>
                     <tr>
                         <td id="ord-detail">
