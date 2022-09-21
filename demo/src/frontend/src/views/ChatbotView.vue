@@ -3,12 +3,12 @@
       <div id="a1">
          <img src="../assets/chatbotstart.png" id="image"><br>
          <textarea id="start" v-model="mytext"/><br>
-         <p>{{mytext}}<br>
+         <pre>{{mytext}}<br>
          더 많은 식물 관련 정보를 얻고 싶으시면<br>
-         <a :href="chatbot.url">{{ chatbot.title }}</a>에 방문해 주세요</p>
+         <a :href="chatbot.url">{{ chatbot.title }}</a>에 방문해 주세요</pre>
          <textarea id="content" rows=20></textarea><br>                
          <input type="text" id="queryin"> 
-         <button id="query">질문</button> <br><br><br>
+         <button id="query">질문</button>
       </div>
    </section>
 </template>
@@ -64,6 +64,7 @@
    margin: auto;
    text-align: center;
    margin-top: 50px;
+   margin-bottom: 150px;
 }
 #image{
    width: 450px;
