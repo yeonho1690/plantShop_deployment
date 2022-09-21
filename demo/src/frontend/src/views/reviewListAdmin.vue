@@ -11,7 +11,7 @@
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성/수정일</th>
-                    <tr>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(review, index) in reviewList" :key="index">

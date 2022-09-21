@@ -46,7 +46,7 @@
     padding: 0;
     margin: 0;
     position: fixed;
-    height: 340px;
+    height: auto;
     overflow: auto;
 
 }
