@@ -17,15 +17,14 @@
      return{
     
         lists: [
-        {link : '/admin/addProduct', title: "상품등록"},
-        {link: '/admin/ProductManage', title: "상품관리"},
+        {link: '/admin/user', title: "회원관리"},
         {link: '/admin/orders', title: "주문관리"},
-        {link: '/3', title: "회원관리"},
         {link: '/admin/notice', title: "공지사항관리"},
         {link: '/admin/faq', title: "FAQ관리"},
         {link: '/admin/question', title: "문의사항관리"},
         {link: '/admin/review', title: "리뷰관리"},
-        {link: '/6', title: "매출관리"},
+        {link : '/admin/addProduct', title: "상품등록"},
+        {link: '/admin/ProductManage', title: "상품관리"},
       ]
      }
      },

@@ -7,11 +7,13 @@
         
             <table class="table text-center">
                 <thead>
-                    <th>번호</th>
-                    <th>구분</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
+                    <tr>
+                        <th>번호</th>
+                        <th>구분</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                    <tr>
                 </thead>
                 <tbody>
                     <tr v-for="(question, index) in questions" :key="index">

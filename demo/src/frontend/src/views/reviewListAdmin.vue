@@ -5,12 +5,13 @@
         <!-- 공지사항 목록 -->        
             <table class="table text-center">
                 <thead>
-                    <th>번호</th>
-                    <th>상품명</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성/수정일</th>
-                    
+                    <tr>
+                        <th>번호</th>
+                        <th>상품명</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성/수정일</th>
+                    <tr>
                 </thead>
                 <tbody>
                     <tr v-for="(review, index) in reviewList" :key="index">
