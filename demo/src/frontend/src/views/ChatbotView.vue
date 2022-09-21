@@ -2,7 +2,7 @@
    <section>
       <div id="a1">
          <img src="../assets/chatbotstart.png" id="image"><br>
-         <textarea id="start" v-model="mytext"/><br>
+         <textarea id="start" v-bind="mytext"/><br>
          <textarea id="content" rows=20></textarea><br>                
          <input type="text" id="queryin"> 
          <button id="query">질문</button> <br><br><br>
