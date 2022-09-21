@@ -15,7 +15,7 @@
       data(){
          return {
             mytext:'안녕하세요.\n트레플 챗봇에 오신 것을 환영합니다.\n\n아래 채팅창을 통해 식물과 관련된 정보를 검색하실 수 있습니다.\n\nex) 동백나무, 고무나무 정보, 공중식물 \n\n더 많은 식물 관련 정보를 얻고싶으시면\nhttps://www.wcpa.or.kr/main 에 방문해 주세요',
-            alldata:"",
+            alldata:"", 
             query:"",
          }
       },
