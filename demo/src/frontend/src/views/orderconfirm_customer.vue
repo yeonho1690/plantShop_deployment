@@ -28,7 +28,7 @@
       
         <h4> 배송지 </h4>
         <hr style="width: 540px;">
-        <table style="font-size: 12px; margin-bottom: 80px;">
+        <table style="font-size: 12px; margin-bottom: 80px;" v-if="this.selectedAddress != '직접 입력'">
             <thead>
                 <th >
                     배송지를 선택하세요
@@ -36,7 +36,7 @@
                 <th style=""><select style="width: 130px; margin-top: 100px; justify-content: center; margin-top: 0px;" v-model="selectedAddress" >
                     <option disabled selected="selected"> 배송지 선택</option>
                     <option v-for="(address, index) in addressList" :key="index" :value="address">{{address.aname}}</option>
-                    <option >직접 입력</option>
+                    <option >{{manualInput.aname}}</option>
                  </select></th>
             </thead>
             <tbody style="border: 1px solid black;" >
@@ -55,6 +55,37 @@
                     <td style="border-bottom: none;"><input type="text" v-model="selectedAddress.apostcode" style="width: 80px;" readonly>&nbsp;<button class="findbtn" type="button" style="font-size: 9px; width: 100px;height: 20px; background-color: rgb(22,160,133); border: none; border-radius: 8px; color: white; font-weight: bold;" @click="showApi">우편번호찾기</button><br>
                         <input type="text" v-model="selectedAddress.aaddress1" style="margin-top: 3px; width: 300px;" readonly placeholder="우편번호찾기를 먼저 이용해주세요"><br> 
                         <input type="text" v-model="selectedAddress.aaddress2" style="margin-top: 3px; width: 300px;" placeholder="상세주소를 입력하세요"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table style="font-size: 12px; margin-bottom: 80px;" v-else>
+            <thead>
+                <th >
+                    배송지를 선택하세요
+                </th>
+                <th style=""><select style="width: 130px; margin-top: 100px; justify-content: center; margin-top: 0px;" v-model="selectedAddress" >
+                    <option disabled selected="selected"> 배송지 선택</option>
+                    <option v-for="(address, index) in addressList" :key="index" :value="address">{{address.aname}}</option>
+                    <option >{{manualInput.aname}}</option>
+                 </select></th>
+            </thead>
+            <tbody style="border: 1px solid black;" >
+                
+                <tr style="border: 1px solid black;">
+                    <th style="border: 1px solid black; background-color: rgb(224,224,224);">수령인명</th>
+                    <td><input type="text" v-model="manualInput.areceipt" placeholder="수령인 성함을 입력하세요" style="width: 300px;"></td>
+                </tr>
+                
+                <tr style="border: 1px solid black;">
+                    <th style="border: 1px solid black; background-color: rgb(224,224,224);">휴대전화번호</th>
+                    <td><input type="text" v-model="manualInput.amobile" placeholder="'-' 를 포함하여 연락처를 입력하세요" style="width: 300px;"></td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <th style="border-bottom: none; border: 1px solid black; background-color: rgb(224,224,224);">주소</th>
+                    <td style="border-bottom: none;"><input type="text" v-model="manualInput.apostcode" style="width: 80px;" readonly>&nbsp;<button class="findbtn" type="button" style="font-size: 9px; width: 100px;height: 20px; background-color: rgb(22,160,133); border: none; border-radius: 8px; color: white; font-weight: bold;" @click="showApi">우편번호찾기</button><br>
+                        <input type="text" v-model="manualInput.aaddress1" style="margin-top: 3px; width: 300px;" readonly placeholder="우편번호찾기를 먼저 이용해주세요"><br> 
+                        <input type="text" v-model="manualInput.aaddress2" style="margin-top: 3px; width: 300px;" placeholder="상세주소를 입력하세요"></td>
                 </tr>
             </tbody>
         </table>
@@ -86,6 +117,7 @@
     import CartService from '../services/cart.service';
     import AddressService from '../services/address.service';
     import OrdersDataService from '../services/OrdersDataService';
+    
     export default{
         name: 'order-confirm',
         data(){
@@ -106,6 +138,14 @@
                 selectedAddress: {
                     aid: null,
                     aname: "",
+                    areceipt: "", 
+                    amobile: "",
+                    apostcode: "",
+                    aaddress1: "",
+                    aaddress2: ""
+                },
+                manualInput: {
+                    aname: "직접 입력",
                     areceipt: "", 
                     amobile: "",
                     apostcode: "",
@@ -144,11 +184,9 @@
                 })
             },
             getCartList() {
-
                 var idToken = window.localStorage.getItem("user");
                 var jsonIdToken = JSON.parse(idToken);
                 this.username = jsonIdToken.username;
-
                 CartService.getAll(this.username)
                 .then((response) => {
                     this.cartList = response.data;
@@ -159,7 +197,6 @@
                     var totalpname = "";
                     var pid = "";
                     var pprice = "";
-
                     for (let i = 0; i < response.data.length; i++){
                     total = total + (response.data[i].pquantity * response.data[i].product.pprice);
                     console.log(response.data[i].pquantity); 
@@ -178,14 +215,12 @@
                     }
                     totalpname = totalpname.replace(',', '');
                     this.totalpname = totalpname;
-
                     for (let i = 0; i < response.data.length; i++){
                     pid = pid + ","+ response.data[i].product.pid;
                     console.log(pid); 
                     }
                     // console.log(pid.substr(1));
                     this.totalpid = pid.substr(1);
-
                     for (let i = 0; i < response.data.length; i++){
                     pprice = pprice + ","+ response.data[i].product.pprice;
                     console.log(pprice); 
@@ -220,9 +255,11 @@
                     this.products.pid = response.data.pid;
                     this.submitted = true;
                     alert("구매가 완료되었습니다.");
+                    
                     this.$router.push({name: 'orders-list'});
-                }).catch(e=>console.log(e));
-
+                }).catch(e => console.log(e));
+                CartService.deleteByUsername(this.username);
+                console.log(this.username);
                 },
            
             msgbox(){
@@ -232,12 +269,10 @@
       new window.daum.Postcode({
         oncomplete: (data) => {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             let fullRoadAddr = data.roadAddress; // 도로명 주소 변수
             let extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
             if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -255,10 +290,15 @@
             if(fullRoadAddr !== ''){
                 fullRoadAddr += extraRoadAddr;
             }
-
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            if(this.selectedAddress != "직접 입력"){
             this.selectedAddress.apostcode = data.zonecode; //5자리 새우편번호 사용
             this.selectedAddress.aaddress1 = fullRoadAddr;
+            } else if(this.selectedAddress == "직접 입력"){
+                this.manualInput.apostcode = data.zonecode;
+                this.manualInput.aaddress1 = fullRoadAddr;
+                console.log(this.manualInput);
+            }
         }
       }).open()
     },

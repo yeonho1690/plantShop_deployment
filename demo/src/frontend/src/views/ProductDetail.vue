@@ -45,11 +45,30 @@
                                     <button type="button" class="btn">Detail</button>
                                     <div id="tab1" class="cont">
                                         <!-- Detail 버튼 화면 구성 시작-->
-                                       <div id="prdDetailContent">
-                                        <h1> 제품 상세 탭 화면 표시 공간 </h1>
-            
-                                        * 배송 안내 *
-                                        <br>.<br>.<br>.<br>PhilodendronJari
+                                       <div id="prdDetailContent"><br>
+                                            <h1> Product Details </h1><br>
+                                            {{ currentProduct.pname }} <br><br>
+                                            <img :src="currentProduct.pimg1" class="img-size" ><br><br>
+                                            <div v-html="currentProduct.pdetail">
+
+                                            </div>
+
+                                            <br><br>
+                                            <p style="background-color: rgb(190, 190, 190); color: white; font-weight: bold; width: 800px; margin-left: 150px;"> ※ 시장 상황에 따라서 식물의 크기가 다소 차이가 날 수 있으니 양해 부탁드립니다.  </p>
+                                            <br><br>
+
+                                            <h2> MORE INFO </h2><br>
+
+                                            <p style="background-color: rgb(22, 160, 133); color: white; font-weight: bold; width: 800px; margin-left: 150px;"> 
+                                                ※ 관심식물에 대한 더 많은 정보가 궁금하다면 트레플 챗봇한테 물어보세요.
+                                            </p>
+
+                                            
+                                            <router-link to="/chatbot" style="font-weight: bold; margin-top: -30px;" class="nav-link">
+                                                ▷ ▶ 챗봇상담 바로가기 ◀ ◁ 
+                                            </router-link>
+                                            
+                                            <br><br>
                                        </div>
                                        <!-- Detail 버튼 화면 구성 끝-->
                                     </div>
@@ -757,6 +776,7 @@
     
     #prdDetailContent {
         margin-top: 0px; 
+        margin-left: -150px; 
         width: 1100px; 
         height: 1000px; 
         background-color: white; 

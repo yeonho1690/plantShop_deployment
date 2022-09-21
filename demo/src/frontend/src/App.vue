@@ -87,6 +87,11 @@
 </template>
 <script>
 export default {
+    data() {
+          return  {
+            username: "",
+          }
+        },
   computed: {
     currentUser() {
       return this.$store.state.auth.user;

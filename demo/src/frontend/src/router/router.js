@@ -58,7 +58,7 @@ import reviewDetailAdmin from '../views/reviewDetailAdmin.vue';
 
 Vue.use(Router);
 export const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
