@@ -171,7 +171,7 @@
                                             <div class="submit-form">
                                                 <section>
                                                     <div id="faq-main">
-                                                        <table class="text-center">
+                                                        <table class="text-center" v-if="faqs != []">
                                                             <thead>
                                                                 <tr>
                                                                     <th>번호</th>
