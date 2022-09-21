@@ -2,8 +2,7 @@
     <div>
     <side-menu></side-menu>
     <div id="notice-manager">
-        <!-- 공지사항 목록 -->
-        
+        <!-- 공지사항 목록 -->        
             <table class="table text-center">
                 <thead>
                     <th>번호</th>
