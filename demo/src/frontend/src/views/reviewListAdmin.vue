@@ -125,20 +125,21 @@ export default {
 }
 
 /* 셀 가로 길이 지정 */
-#notice-manager tbody tr td:nth-child(1) {  /* 구분 */
+#notice-manager tbody tr td:nth-child(1) {  /* 번호 */
     width: 10%;
 }
-#notice-manager tbody tr td:nth-child(2) {  /* 제목 */
-    width: 45%;
+#notice-manager tbody tr td:nth-child(2) {  /* 상품명 */
+    width: 20%;   
+}
+
+#notice-manager tbody tr td:nth-child(3) {  /* 제목 */
+    width: 30%;
     text-align: left;
 }
-#notice-manager tbody tr td:nth-child(2) span {
-    margin-left: 5%;
+#notice-manager tbody tr td:nth-child(4) {  /* 작성자 */
+    width: 20%;
 }
-#notice-manager tbody tr td:nth-child(3) {  /* 기간 */
-    width: 25%;
-}
-#notice-manager tbody tr td:nth-child(4) {  /* 수정, 삭제 */
+#notice-manager tbody tr td:nth-child(5) {  /* 작성일 */
     width: 20%;
 }
 

@@ -37,7 +37,7 @@
                         <td style="text-decoration: none;"><router-link :to="`/admin/faq/detail_admin/${faq.fid}`">{{faq.ftitle}} </router-link> </td>
                         <td>{{faq.wdate}}</td>
                         <td>
-                            <router-link :to="`/admin/faq/update/${faq.fid}`" class="btn" >수정</router-link>
+                            <router-link :to="`/admin/faq/update/${faq.fid}`" tag="button" class="btn" >수정</router-link>
                         </td>
                     </tr>
                    
@@ -183,9 +183,7 @@ components: {
     width: 45%;
     text-align: left;
 }
-#notice-manager tbody tr td:nth-child(2) span {
-    margin-left: 5%;
-}
+
 #notice-manager tbody tr td:nth-child(3) {  /* 기간 */
     width: 25%;
 }

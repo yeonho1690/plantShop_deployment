@@ -28,7 +28,7 @@
             <table class="table text-center">
                 <thead>
                     <tr>
-                        <th>구분</th>
+                        <th>번호</th>
                         <th>제목</th>
                         <th>작성일</th>
                         <th>수정일</th>
@@ -211,9 +211,7 @@ export default {
     width: 45%;
     text-align: left;
 }
-#notice-manager tbody tr td:nth-child(2) span {
-    margin-left: 5%;
-}
+
 #notice-manager tbody tr td:nth-child(3) {  /* 기간 */
     width: 25%;
 }
