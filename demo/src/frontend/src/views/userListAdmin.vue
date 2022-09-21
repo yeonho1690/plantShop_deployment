@@ -2,25 +2,25 @@
     <div>
         <side-menu></side-menu>
         <div id="notice-manager">
-        <table id="tabke text-center">
-            <thead >
-                <tr>
-                    <th> 번호 </th>
-                    <th> 아이디 </th>
-                    <th> 이메일 </th>
-                    <th> 구분 </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(user, index) in userList" :key="index">
-                    <td>{{index+1}}</td>
-                    <td>{{user.username}}</td>
-                    <td>{{user.email}}</td>
-                    <td v-if="user.roles[0].name == 'ROLE_USER'">사용자</td>
-                    <td v-if="user.roles[0].name == 'ROLE_ADMIN'" style="color: red; font-weight: bold">관리자**</td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="table text-center">
+                <thead >
+                    <tr>
+                        <th> 번호 </th>
+                        <th> 아이디 </th>
+                        <th> 이메일 </th>
+                        <th> 구분 </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(user, index) in userList" :key="index">
+                        <td>{{index+1}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td v-if="user.roles[0].name == 'ROLE_USER'">사용자</td>
+                        <td v-if="user.roles[0].name == 'ROLE_ADMIN'" style="color: red; font-weight: bold">관리자**</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
@@ -72,7 +72,7 @@
 </script>
 
 <style scoped>
-    #notice-manager {
+#notice-manager {
     width: 1500px;
     min-height: 500px;
     margin: auto;
