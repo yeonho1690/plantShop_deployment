@@ -18,6 +18,9 @@ getbyId(cid) {
  getproductData(pid) {
     return http.delete(`/auth/cart/productprice/${pid}`);
   }
+  deleteByUsername(username) {
+    return http.delete(`/auth/cart/deleteall/${username}`);
+  }
  
 }
 export default new CartService();

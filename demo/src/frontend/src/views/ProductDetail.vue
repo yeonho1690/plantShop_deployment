@@ -1075,7 +1075,7 @@
         font-size: 10px; 
         text-align: center;
     }
-    #faq-search {    /* 검색칸 화면 가운데 배치 */
+#faq-search {    /* 검색칸 화면 가운데 배치 */
     margin-left: 500px;
 }
 #faq-search input {
